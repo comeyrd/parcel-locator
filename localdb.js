@@ -16,13 +16,21 @@ function addColis(colis) {
     saveColis(pastObjects)
 }
 
-function getColis() {
-    const data = fs.readFileSync(colisPath, 'utf8');
+function deserialize(data) {
     return JSON.parse(data);
 }
 
+function serialize(data) {
+    return JSON.stringify(data)
+}
+
+function getColis() {
+    const data = fs.readFileSync(colisPath, 'utf8');
+    return deserialize(data);
+}
+
 function saveColis(colisArray) {
-    fs.writeFileSync(colisPath, JSON.stringify(colisArray));
+    fs.writeFileSync(colisPath, serialize(colisArray));
 }
 
 function removeColis(colisId) {
@@ -49,7 +57,7 @@ function setupDb() {
 
 function getLocations() {
     const data = fs.readFileSync(locationPath, 'utf8');
-    return JSON.parse(data);
+    return deserialize(data);
 }
 
 function addLocation(loc) {
@@ -68,7 +76,7 @@ function removeLocation(loc) {
 }
 
 function saveLocation(location) {
-    fs.writeFileSync(locationPath, JSON.stringify(location));
+    fs.writeFileSync(locationPath, serialize(location));
 }
 
 

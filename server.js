@@ -1,7 +1,7 @@
 const express = require('express');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
-const { addColis, getColis, removeColis,getLocations,addLocation,removeLocation } = require('./dbMaps/localdb.js');
+const { addColis, getColis, removeColis,getLocations,addLocation,removeLocation } = require('./localdb.js');
 const path = require('path'); // Node.js path module for handling file path
 const app = express();
 const port = 3000;

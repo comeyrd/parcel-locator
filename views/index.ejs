@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>colis-manager</title>
+    <link rel="stylesheet" type="text/css" href="/public/style.css">
+</head>
+
+<body>
+    <h1>Ajouter un Colis</h1>
+    <form action="/add-colis" method="post">
+        <label for="name">Nom :</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="location">Emplacement :</label>
+        <select id="location" name="location" onchange="handleLocationChange();" required>
+            <option value="" disabled selected hidden>Choisir un emplacement</option>
+            <% locations.forEach(function(location) { %>
+                <option value="<%= location %>"><%= location %></option>
+            <% }); %>
+            <option value="Other">Nouvel emplacement</option>
+        </select>
+        <br>
+        <div id="otherField" style="display:none;">
+            <label for="otherlocation">Nouvel Emplacement :</label>
+            <input type="text" id="otherlocation" name="otherlocation">
+        </div>
+        <button type="submit">Valider</button>
+    </form>
+
+    <h1>Liste des Colis</h1>
+
+    <table border="1" class ="colistable" >
+        <thead>
+            <tr>
+                <th class="colhead">ID</th>
+                <th class="colhead">Nom</th>
+                <th class="colhead">Emplacement</th>
+                <th class="colhead">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% colis.forEach(function(colisItem) { %>
+                <tr>
+                    <td class="colrow">
+                        <%= colisItem.id %>
+                    </td>
+                    <td class="colrow">
+                        <%= colisItem.name %>
+                    </td class="colrow">
+                    <td>
+                        <%= colisItem.location %>
+                    </td class="colrow">
+                    <td><a class="delete-button" href="/remove-colis?id=<%= colisItem.id %>">Delete</a></td>
+                </tr>
+                <% }); %>
+
+                    <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    <br><br>
+    <h3>Liste des Emplacements</h3>
+    <table border="1" class="emplactable">
+        <thead>
+            <tr>
+                <th class="emplhead">Emplacement</th>
+                <th class="emplhead">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% locations.forEach(function(location) { %>
+                <tr>
+                    <td class="emplrow">
+                        <%= location %>
+                    </td>
+                    <td class="emplrow"><a class="delete-button" href="/remove-location?loc=<%= location %>">Delete</a></td>
+                </tr>
+                <% }); %>
+
+                    <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+</body>
+<script>
+    function handleLocationChange() {
+        const select = document.getElementById('location');
+        const otherField = document.getElementById('otherField');
+        const otherLocationInput = document.getElementById('otherlocation');
+
+        if (select.value === 'Other') {
+            otherField.style.display = 'block';
+            otherLocationInput.setAttribute('required', 'true');
+        } else {
+            otherField.style.display = 'none';
+            otherLocationInput.removeAttribute('required');
+        }
+    }
+</script>
+
+</html>

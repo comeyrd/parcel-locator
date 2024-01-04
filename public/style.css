@@ -1,0 +1,112 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 5px;
+    width: 50%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+select {
+    padding: 5px;
+    width: 25%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.colistable {
+    width: 50%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin: 0 auto; /* Center the table horizontally */
+}
+
+.colrow ,.colhead {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.colhead {
+    background-color: #4caf50;
+    color: white;
+}
+.colhead:not(:last-child), .colrow:not(:last-child) {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+/* No padding for the last column */
+.colhead:last-child, .colrow:last-child {
+    padding: 0;
+}
+
+.delete-button {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #ff0000;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+}
+
+.delete-button:hover {
+    color: #da1c1c;
+    background-color: #ffffff;
+    border: 1px solid #da1c1c;
+}
+
+.emplactable {
+    width: 25%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin: 0 auto; /* Center the table horizontally */
+}
+
+.emplrow ,.emplhead {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.emplhead {
+    background-color: #741a60;
+    color: white;
+}
+.emplhead:not(:last-child), .emplrow:not(:last-child) {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+/* No padding for the last column */
+.emplhead:last-child, .emplrow:last-child {
+    padding: 0;
+}

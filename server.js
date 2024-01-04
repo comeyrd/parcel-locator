@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const { addColis, getColis, removeColis,getLocations,addLocation,removeLocation } = require('./localdb.js');
 const path = require('path'); // Node.js path module for handling file path
 const app = express();
-const port = 3000;
+const port = 8103;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // Set EJS as the view engine

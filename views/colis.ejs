@@ -11,7 +11,7 @@
 
 <body>
     <h1>Ajouter un Colis</h1>
-    <form action="/add-colis" method="post">
+    <form action="<%= path %>/add-colis" method="post">
         <label for="name">Nom :</label>
         <input type="text" id="name" name="name" required>
         <br>
@@ -54,7 +54,7 @@
                     <td>
                         <%= colisItem.location %>
                     </td class="colrow">
-                    <td><a class="delete-button" href="/remove-colis?id=<%= colisItem.id %>">Delete</a></td>
+                    <td><a class="delete-button" href="<%= path %>/remove-colis?id=<%= colisItem.id %>">Delete</a></td>
                 </tr>
                 <% }); %>
 
@@ -76,7 +76,7 @@
                     <td class="emplrow">
                         <%= location %>
                     </td>
-                    <td class="emplrow"><a class="delete-button" href="/remove-location?loc=<%= location %>">Delete</a></td>
+                    <td class="emplrow"><a class="delete-button" href="<%= path %>/remove-location?loc=<%= location %>">Delete</a></td>
                 </tr>
                 <% }); %>
 

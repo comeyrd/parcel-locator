@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    #store-container {
+      position: relative;
+    }
+
+    .parcel-marker {
+      position: absolute;
+      background-color: red;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      line-height: 10px;
+      color: rgb(0, 0, 0);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .parcel-selector {
+      position: absolute;
+      background-color: green;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      line-height: 10px;
+      color: rgb(0, 0, 0);
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
+  <title>Package Tracking</title>
+</head>
+
+<body>
+<div id="buttonsdiv">
+  <button id="editbtn" onclick="edit()">Edit</button>
+</div>
+  <div id="store-container">
+    <img name="img" id="img" src="store-plan.jpg" usemap="#storemap" alt="Store Plan" role="button" />
+    <map name="storemap" id="storemap"></map>
+    <div id="storedivmap"></div>
+  </div>
+
+  <script>
+    edBool = false;
+    // Example parcel data (replace this with your actual data)
+    var parcels = [
+      { name: "Parcel 1", coords: { x: 100, y: 100 } },
+      { name: "Parcel 2", coords: { x: 200, y: 200 } },
+      // Add more parcels as needed
+    ];
+    var storeContainer = document.getElementById("store-container");
+    var storeMap = document.getElementById("storemap");
+    var storedivmap = document.getElementById("storedivmap");
+    var editbtn = document.getElementById("editbtn");
+
+    var imgimg = document.getElementById("img");
+
+    function updateParcels() {
+      storeMap.innerHTML = '';
+      storedivmap.innerHTML = '';
+      parcels.forEach(function (parcel) {
+        var marker = document.createElement("div");
+        marker.className = "parcel-marker";
+        marker.style.left = parcel.coords.x + "px";
+        marker.style.top = parcel.coords.y + "px";
+        marker.id = parcel.name;
+        
+        marker.addEventListener("click", function () {
+          updateParcels();
+          marker.style.backgroundColor = "green";
+          document.getElementById(parcel.name).className = " parcel-selector";
+        });
+     
+        storedivmap.appendChild(marker);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      updateParcels(parcels);
+    });
+
+    imgimg.addEventListener("click", function (event) {
+      if(edBool){  
+        parcels.push({ name: "Parcel " + (parcels.length + 1), coords: { x: event.offsetX, y: event.offsetY} })
+        updateParcels();
+        console.log(event);
+    }});
+    function edit(){
+      edBool= !edBool;
+      if(edBool){
+        editbtn.textContent ="Stop Editing"
+      }else{
+        editbtn.textContent ="Edit"
+      }
+    }
+  </script>
+
+</body>
+
+</html>
